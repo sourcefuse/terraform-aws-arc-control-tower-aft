@@ -1,3 +1,15 @@
+################################################################################
+## defaults
+################################################################################
+variable "profile" {
+  type        = string
+  description = "AWS Profile to authenticate using"
+  default     = "default"
+}
+
+################################################################################
+## aft
+################################################################################
 variable "aft_vpc_endpoints" {
   type        = bool
   description = "Flag turning VPC endpoints on/off for AFT VPC"

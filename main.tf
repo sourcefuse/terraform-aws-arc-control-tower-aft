@@ -14,6 +14,11 @@ terraform {
   #  backend "s3" {}
 }
 
+provider "aws" {
+  region  = var.ct_home_region
+  profile = var.profile
+}
+
 module "tags" {
   source = "git@github.com:sourcefuse/terraform-aws-refarch-tags?ref=1.0.2"
 
