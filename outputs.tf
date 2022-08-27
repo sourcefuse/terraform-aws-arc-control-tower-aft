@@ -6,7 +6,7 @@ output "account_ids" {
   value = tomap({
     aft_management_account_id = module.control_tower.aft_management_account_id,
     ct_management_account_id = module.control_tower.ct_management_account_id
-    log_archive_account_id = module.control_tower.ct_managemlog_archive_account_ident_account_id
+    log_archive_account_id = module.control_tower.log_archive_account_id
   })
 }
 
