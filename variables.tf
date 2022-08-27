@@ -1,18 +1,9 @@
 ################################################################################
-## defaults
-################################################################################
-variable "profile" {
-  type        = string
-  description = "AWS Profile to authenticate using"
-  default     = "default"
-}
-
-################################################################################
 ## aft
 ################################################################################
 variable "aft_vpc_endpoints" {
-  type        = bool
   description = "Flag turning VPC endpoints on/off for AFT VPC"
+  type        = bool
   default     = true
 }
 
@@ -85,7 +76,6 @@ variable "aft_framework_repo_url" {
 variable "aft_management_account_id" {
   description = "AFT Management Account ID"
   type        = string
-  default     = ""
 }
 
 variable "aft_metrics_reporting" {
@@ -97,37 +87,31 @@ variable "aft_metrics_reporting" {
 variable "aft_vpc_cidr" {
   description = "CIDR Block to allocate to the AFT VPC"
   type        = string
-  default     = "192.168.0.0/22"
 }
 
 variable "aft_vpc_private_subnet_01_cidr" {
   description = "CIDR Block to allocate to the Private Subnet 01"
   type        = string
-  default     = "192.168.0.0/24"
 }
 
 variable "aft_vpc_private_subnet_02_cidr" {
   description = "CIDR Block to allocate to the Private Subnet 02"
   type        = string
-  default     = "192.168.1.0/24"
 }
 
 variable "aft_vpc_public_subnet_01_cidr" {
   description = "CIDR Block to allocate to the Public Subnet 01"
   type        = string
-  default     = "192.168.2.0/25"
 }
 
 variable "aft_vpc_public_subnet_02_cidr" {
   description = "CIDR Block to allocate to the Public Subnet 02"
   type        = string
-  default     = "192.168.2.128/25"
 }
 
 variable "audit_account_id" {
   description = "Audit Account Id"
   type        = string
-  default     = ""
 }
 
 variable "cloudwatch_log_group_retention" {
@@ -139,13 +123,11 @@ variable "cloudwatch_log_group_retention" {
 variable "ct_home_region" {
   description = "The region from which this module will be executed. This MUST be the same region as Control Tower is deployed."
   type        = string
-  default     = ""
 }
 
 variable "ct_management_account_id" {
   description = "Control Tower Management Account Id"
   type        = string
-  default     = ""
 }
 
 variable "github_enterprise_url" {
@@ -175,7 +157,6 @@ variable "global_customizations_repo_name" {
 variable "log_archive_account_id" {
   description = "Log Archive Account Id"
   type        = string
-  default     = ""
 }
 
 variable "maximum_concurrent_customizations" {
@@ -218,7 +199,6 @@ variable "terraform_version" {
 variable "tf_backend_secondary_region" {
   description = "AFT creates a backend for state tracking for its own state as well as OSS cases. The backend's primary region is the same as the AFT region, but this defines the secondary region to replicate to."
   type        = string
-  default     = ""
 }
 
 variable "vcs_provider" {

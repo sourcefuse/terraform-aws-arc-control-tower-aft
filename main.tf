@@ -10,31 +10,13 @@ terraform {
       version = "~> 4.27"
     }
   }
-
-  #  backend "s3" {}
-}
-
-provider "aws" {
-  region  = var.ct_home_region
-  profile = var.profile
-}
-
-module "tags" {
-  source = "git@github.com:sourcefuse/terraform-aws-refarch-tags?ref=1.0.2"
-
-  environment = terraform.workspace
-  project     = "jensen-hughes-terraform-control-tower"
-
-  extra_tags = {
-    MonoRepo = "False"
-  }
 }
 
 ################################################################################
 ## control tower
 ################################################################################
 module "control_tower" {
-  source = "git@github.com:aws-ia/terraform-aws-control_tower_account_factory"
+  source = "git@github.com:aws-ia/terraform-aws-control_tower_account_factory?ref=1.6.2"
 
   aft_vpc_endpoints                               = var.aft_vpc_endpoints
   account_customizations_repo_branch              = var.account_customizations_repo_branch
