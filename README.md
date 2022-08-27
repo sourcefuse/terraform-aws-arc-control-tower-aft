@@ -1,4 +1,4 @@
-# Jensen Hughes Terraform Control Tower
+# Terraform Control Tower
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
