@@ -1,5 +1,81 @@
 ################################################################################
-## aft
+## accounts
+################################################################################
+variable "account_ids" {
+  description = "IDs to the accounts used for deploying the respective resources into"
+  type = object({
+    aft_management           = string
+    audit                    = string
+    control_tower_management = string
+    log_archive              = string
+  })
+}
+
+################################################################################
+## configuration repos
+################################################################################
+variable "aft_framework_repo" {
+  description = "Information on the git repo for managing the AFT framework"
+  type = object({
+    url = string
+    ref = string
+  })
+  default = {
+    url = "https://github.com/sourcefuse/terraform-aws-refarch-control-tower-aft.git"
+    ref = "main"
+  }
+}
+
+variable "account_customizations_repo" {
+  description = "Information on the git repo for managing the account customizations. For non-CodeCommit repos, name should be in the format of org/repo."
+  type = object({
+    name   = string
+    branch = string
+  })
+  default = {
+    name   = "sourcefuse/terraform-aws-refarch-aft-account-customizations"
+    branch = "main"
+  }
+}
+
+variable "account_provisioning_customizations_repo" {
+  description = "Information on the git repo for provisioning the account customizations. For non-CodeCommit repos, name should be in the format of org/repo."
+  type = object({
+    name   = string
+    branch = string
+  })
+  default = {
+    name   = "sourcefuse/terraform-aws-refarch-aft-account-provisioning-customizations"
+    branch = "main"
+  }
+}
+
+variable "account_request_repo" {
+  description = "Information on the git repo for account requests. For non-CodeCommit repos, name should be in the format of org/repo."
+  type = object({
+    name   = string
+    branch = string
+  })
+  default = {
+    name   = "sourcefuse/terraform-aws-refarch-aft-account-request"
+    branch = "main"
+  }
+}
+
+variable "global_customizations_repo" {
+  description = "Information on the git repo for global customizations. For non-CodeCommit repos, name should be in the format of org/repo."
+  type = object({
+    name   = string
+    branch = string
+  })
+  default = {
+    name   = "sourcefuse/terraform-aws-refarch-aft-global-customizations"
+    branch = "main"
+  }
+}
+
+################################################################################
+## vpc management
 ################################################################################
 variable "aft_vpc_endpoints" {
   description = "Flag turning VPC endpoints on/off for AFT VPC"
@@ -7,162 +83,27 @@ variable "aft_vpc_endpoints" {
   default     = true
 }
 
-variable "account_customizations_repo_branch" {
-  description = "Branch to source account customizations repo from"
-  type        = string
-  default     = "main"
-}
-
-variable "account_customizations_repo_name" {
-  description = "Repository name for the account customizations files. For non-CodeCommit repos, name should be in the format of Org/Repo"
-  type        = string
-  default     = "aft-account-customizations"
-}
-
-variable "account_provisioning_customizations_repo_branch" {
-  description = "Branch to source account provisioning customization files"
-  type        = string
-  default     = "main"
-}
-
-variable "account_provisioning_customizations_repo_name" {
-  description = "Repository name for the account provisioning customizations files. For non-CodeCommit repos, name should be in the format of Org/Repo"
-  type        = string
-  default     = "aft-account-provisioning-customizations"
-}
-
-variable "account_request_repo_branch" {
-  description = "Branch to source account request repo from"
-  type        = string
-  default     = "main"
-}
-
-variable "account_request_repo_name" {
-  description = "Repository name for the account request files. For non-CodeCommit repos, name should be in the format of Org/Repo"
-  type        = string
-  default     = "aft-account-request"
-}
-
-variable "aft_feature_cloudtrail_data_events" {
-  description = "Feature flag toggling CloudTrail data events on/off"
-  type        = bool
-  default     = false
-}
-
 variable "aft_feature_delete_default_vpcs_enabled" {
   description = "Feature flag toggling deletion of default VPCs on/off"
-  type        = bool
-  default     = false
-}
-
-variable "aft_feature_enterprise_support" {
-  description = "Feature flag toggling Enterprise Support enrollment on/off"
-  type        = bool
-  default     = false
-}
-
-variable "aft_framework_repo_git_ref" {
-  description = "Git branch from which the AFT framework should be sourced from"
-  type        = string
-  default     = null
-}
-
-variable "aft_framework_repo_url" {
-  description = "Git repo URL where the AFT framework should be sourced from"
-  type        = string
-  default     = "https://github.com/aws-ia/terraform-aws-control_tower_account_factory.git"
-}
-
-variable "aft_management_account_id" {
-  description = "AFT Management Account ID"
-  type        = string
-}
-
-variable "aft_metrics_reporting" {
-  description = "Flag toggling reporting of operational metrics"
   type        = bool
   default     = true
 }
 
-variable "aft_vpc_cidr" {
-  description = "CIDR Block to allocate to the AFT VPC"
-  type        = string
-}
-
-variable "aft_vpc_private_subnet_01_cidr" {
-  description = "CIDR Block to allocate to the Private Subnet 01"
-  type        = string
-}
-
-variable "aft_vpc_private_subnet_02_cidr" {
-  description = "CIDR Block to allocate to the Private Subnet 02"
-  type        = string
-}
-
-variable "aft_vpc_public_subnet_01_cidr" {
-  description = "CIDR Block to allocate to the Public Subnet 01"
-  type        = string
-}
-
-variable "aft_vpc_public_subnet_02_cidr" {
-  description = "CIDR Block to allocate to the Public Subnet 02"
-  type        = string
-}
-
-variable "audit_account_id" {
-  description = "Audit Account Id"
-  type        = string
-}
-
-variable "cloudwatch_log_group_retention" {
-  description = "Amount of days to keep CloudWatch Log Groups for Lambda functions. 0 = Never Expire"
-  type        = string
-  default     = "0"
-}
-
-variable "ct_home_region" {
+################################################################################
+## control tower
+################################################################################
+variable "control_tower_home_region" {
   description = "The region from which this module will be executed. This MUST be the same region as Control Tower is deployed."
   type        = string
 }
 
-variable "ct_management_account_id" {
-  description = "Control Tower Management Account Id"
-  type        = string
-}
-
-variable "github_enterprise_url" {
-  description = "GitHub enterprise URL, if GitHub Enterprise is being used"
-  type        = string
-  default     = "null"
-}
-
-variable "global_codebuild_timeout" {
-  description = "Codebuild build timeout"
-  type        = number
-  default     = 60
-}
-
-variable "global_customizations_repo_branch" {
-  description = "Branch to source global customizations repo from"
-  type        = string
-  default     = "main"
-}
-
-variable "global_customizations_repo_name" {
-  description = "Repository name for the global customization files. For non-CodeCommit repos, name should be in the format of Org/Repo"
-  type        = string
-  default     = "aft-global-customizations"
-}
-
-variable "log_archive_account_id" {
-  description = "Log Archive Account Id"
-  type        = string
-}
-
-variable "maximum_concurrent_customizations" {
-  description = "Maximum number of customizations/pipelines to run at once"
-  type        = number
-  default     = 5
+################################################################################
+## terraform
+################################################################################
+variable "aft_feature_enterprise_support" {
+  description = "Feature flag toggling Enterprise Support enrollment on/off"
+  type        = bool
+  default     = false
 }
 
 variable "terraform_api_endpoint" {
@@ -193,16 +134,86 @@ variable "terraform_token" {
 variable "terraform_version" {
   description = "Terraform version being used for AFT"
   type        = string
-  default     = "1.2.7"
+  default     = "1.3.6"
 }
 
-variable "tf_backend_secondary_region" {
+variable "terraform_backend_secondary_region" {
   description = "AFT creates a backend for state tracking for its own state as well as OSS cases. The backend's primary region is the same as the AFT region, but this defines the secondary region to replicate to."
   type        = string
 }
 
+################################################################################
+## auditing / logging / metrics
+################################################################################
+variable "cloudwatch_log_group_retention" {
+  description = "Amount of days to keep CloudWatch Log Groups for Lambda functions. 0 = Never Expire"
+  type        = string
+  default     = "0"
+}
+
+variable "aft_feature_cloudtrail_data_events" {
+  description = "Feature flag toggling CloudTrail data events on/off"
+  type        = bool
+  default     = true
+}
+
+variable "aft_metrics_reporting" {
+  description = "Flag toggling reporting of operational metrics"
+  type        = bool
+  default     = true
+}
+
+################################################################################
+## networking
+################################################################################
+variable "aft_vpc_cidr" {
+  description = "CIDR Block to allocate to the AFT VPC"
+  type        = string
+}
+
+variable "aft_vpc_private_subnet_01_cidr" {
+  description = "CIDR Block to allocate to the Private Subnet 01"
+  type        = string
+}
+
+variable "aft_vpc_private_subnet_02_cidr" {
+  description = "CIDR Block to allocate to the Private Subnet 02"
+  type        = string
+}
+
+variable "aft_vpc_public_subnet_01_cidr" {
+  description = "CIDR Block to allocate to the Public Subnet 01"
+  type        = string
+}
+
+variable "aft_vpc_public_subnet_02_cidr" {
+  description = "CIDR Block to allocate to the Public Subnet 02"
+  type        = string
+}
+
+################################################################################
+## vcs
+################################################################################
 variable "vcs_provider" {
   description = "Customer VCS Provider - valid inputs are codecommit, bitbucket, github, or githubenterprise"
   type        = string
   default     = "github"
+}
+
+variable "github_enterprise_url" {
+  description = "GitHub enterprise URL, if GitHub Enterprise is being used"
+  type        = string
+  default     = "null"
+}
+
+variable "global_codebuild_timeout" {
+  description = "Codebuild build timeout"
+  type        = number
+  default     = 60
+}
+
+variable "maximum_concurrent_customizations" {
+  description = "Maximum number of customizations/pipelines to run at once"
+  type        = number
+  default     = 5
 }
