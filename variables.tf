@@ -171,24 +171,10 @@ variable "aft_vpc_cidr" {
   type        = string
 }
 
-variable "aft_vpc_private_subnet_01_cidr" {
-  description = "CIDR Block to allocate to the Private Subnet 01"
+variable "aft_max_subnets" {
+  description = "Maximum number of subnets to create based off the provided VPC CIDR"
   type        = string
-}
-
-variable "aft_vpc_private_subnet_02_cidr" {
-  description = "CIDR Block to allocate to the Private Subnet 02"
-  type        = string
-}
-
-variable "aft_vpc_public_subnet_01_cidr" {
-  description = "CIDR Block to allocate to the Public Subnet 01"
-  type        = string
-}
-
-variable "aft_vpc_public_subnet_02_cidr" {
-  description = "CIDR Block to allocate to the Public Subnet 02"
-  type        = string
+  default     = "4"
 }
 
 ################################################################################

@@ -13,11 +13,7 @@ terraform {
 }
 
 ################################################################################
-## lookups
-################################################################################
-
-################################################################################
-## control tower
+## aft
 ################################################################################
 module "aft" {
   source = "git::https://github.com/aws-ia/terraform-aws-control_tower_account_factory?ref=1.7.0"
@@ -62,13 +58,11 @@ module "aft" {
   aft_metrics_reporting              = var.aft_metrics_reporting
 
   ## networking
-  // TODO - add lookups using names
   aft_vpc_cidr                   = var.aft_vpc_cidr
-  aft_vpc_private_subnet_01_cidr = var.aft_vpc_private_subnet_01_cidr
-  aft_vpc_private_subnet_02_cidr = var.aft_vpc_private_subnet_02_cidr
-  aft_vpc_public_subnet_01_cidr  = var.aft_vpc_public_subnet_01_cidr
-  aft_vpc_public_subnet_02_cidr  = var.aft_vpc_public_subnet_02_cidr
-  // TODO - END
+  aft_vpc_private_subnet_01_cidr = cidrsubnet(var.aft_vpc_cidr, ceil(log(var.aft_max_subnets, 2)), 0)
+  aft_vpc_private_subnet_02_cidr = cidrsubnet(var.aft_vpc_cidr, ceil(log(var.aft_max_subnets, 2)), 1)
+  aft_vpc_public_subnet_01_cidr  = cidrsubnet(var.aft_vpc_cidr, ceil(log(var.aft_max_subnets, 2)), 2)
+  aft_vpc_public_subnet_02_cidr  = cidrsubnet(var.aft_vpc_cidr, ceil(log(var.aft_max_subnets, 2)), 3)
 
   ## vcs
   vcs_provider                      = var.vcs_provider
