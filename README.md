@@ -15,8 +15,6 @@ module "aft" {
 ```
 
 ### AFT CodeBuild Access Token
-THIS SECTION IS UNDER CONSTRUCTION AND SUBJECT TO CHANGE
-
 If AFT is reading from a private repo, CodeBuild will need access to that repo via an access token.  
 
 This will need to be added prior to executing `terraform apply`.  
@@ -31,9 +29,6 @@ for more information.
   ```shell
   aws codebuild import-source-credentials --cli-input-json file://import-source-credentials.json
   ```
-* From the AFT Management's account console, Navigate to _CodeBuild_ > Expand _Settings_ > Select _Connections_
-  ![img.png](.uploads/img.png)
-* Select the 
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
@@ -68,7 +63,7 @@ No resources.
 | <a name="input_aft_feature_cloudtrail_data_events"></a> [aft\_feature\_cloudtrail\_data\_events](#input\_aft\_feature\_cloudtrail\_data\_events) | Feature flag toggling CloudTrail data events on/off | `bool` | `true` | no |
 | <a name="input_aft_feature_delete_default_vpcs_enabled"></a> [aft\_feature\_delete\_default\_vpcs\_enabled](#input\_aft\_feature\_delete\_default\_vpcs\_enabled) | Feature flag toggling deletion of default VPCs on/off | `bool` | `true` | no |
 | <a name="input_aft_feature_enterprise_support"></a> [aft\_feature\_enterprise\_support](#input\_aft\_feature\_enterprise\_support) | Feature flag toggling Enterprise Support enrollment on/off | `bool` | `false` | no |
-| <a name="input_aft_framework_repo"></a> [aft\_framework\_repo](#input\_aft\_framework\_repo) | Information on the git repo for managing the AFT framework | <pre>object({<br>    url = string<br>    ref = string<br>  })</pre> | <pre>{<br>  "ref": "chore/ARC-591-cleanup-and-example",<br>  "url": "https://github.com/sourcefuse/terraform-aws-refarch-control-tower-aft.git"<br>}</pre> | no |
+| <a name="input_aft_framework_repo"></a> [aft\_framework\_repo](#input\_aft\_framework\_repo) | Information on the git repo for managing the AFT framework | <pre>object({<br>    url = string<br>    ref = string<br>  })</pre> | <pre>{<br>  "ref": "main",<br>  "url": "https://github.com/sourcefuse/terraform-aws-refarch-control-tower-aft.git"<br>}</pre> | no |
 | <a name="input_aft_max_subnets"></a> [aft\_max\_subnets](#input\_aft\_max\_subnets) | Maximum number of subnets to create based off the provided VPC CIDR | `string` | `"4"` | no |
 | <a name="input_aft_metrics_reporting"></a> [aft\_metrics\_reporting](#input\_aft\_metrics\_reporting) | Flag toggling reporting of operational metrics | `bool` | `true` | no |
 | <a name="input_aft_vpc_cidr"></a> [aft\_vpc\_cidr](#input\_aft\_vpc\_cidr) | CIDR Block to allocate to the AFT VPC | `string` | n/a | yes |
@@ -123,23 +118,23 @@ No resources.
 ### Configurations
 
 - Configure pre-commit hooks
-```sh
-pre-commit install
-```
+  ```sh
+  pre-commit install
+  ```
 
 ### Tests
 - Tests are available in `test` directory
 - Configure the dependencies
-```sh
-cd test
-go mod init github.com/sourcefuse/terraform-aws-ref-arch-db
-go get github.com/gruntwork-io/terratest/modules/terraform
-```
+  ```sh
+  cd test
+  go mod init github.com/sourcefuse/terraform-aws-refarch-control-tower-aft
+  go get github.com/gruntwork-io/terratest/modules/terraform
+  ```
 - Now execute the test  
-```sh
-cd test/
-go test
-```
+  ```sh
+  cd test/
+  go test
+  ```
 
 ## Authors
 
