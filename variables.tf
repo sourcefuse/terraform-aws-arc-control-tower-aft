@@ -21,9 +21,8 @@ variable "aft_framework_repo" {
     ref = string
   })
   default = {
-    // TODO - change to main
     url = "https://github.com/sourcefuse/terraform-aws-refarch-control-tower-aft.git"
-    ref = "chore/ARC-591-cleanup-and-example"
+    ref = "main"
   }
 }
 
