@@ -3,11 +3,7 @@
 ################################################################################
 output "account_ids" {
   description = "Map of account IDs for each account created."
-  value = tomap({
-    aft_management_account_id = module.aft.aft_management_account_id,
-    ct_management_account_id  = module.aft.ct_management_account_id
-    log_archive_account_id    = module.aft.log_archive_account_id
-  })
+  value       = module.aft.account_ids
 }
 
 ################################################################################
@@ -81,18 +77,12 @@ output "aft_vpc_cidr" {
 
 output "aft_vpc_private_subnet_cidrs" {
   description = "AFT VPC private subnet 01 cidr."
-  value = [
-    module.aft.aft_vpc_private_subnet_01_cidr,
-    module.aft.aft_vpc_private_subnet_02_cidr,
-  ]
+  value       = module.aft.aft_vpc_private_subnet_cidrs
 }
 
 output "aft_vpc_public_subnet_cidrs" {
   description = "AFT VPC private subnet 01 cidr."
-  value = [
-    module.aft.aft_vpc_public_subnet_01_cidr,
-    module.aft.aft_vpc_public_subnet_02_cidr,
-  ]
+  value       = module.aft.aft_vpc_public_subnet_cidrs
 }
 
 ################################################################################
