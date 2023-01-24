@@ -39,5 +39,5 @@ module "aft" {
   aft_vpc_cidr                       = var.aft_vpc_cidr
   control_tower_home_region          = var.control_tower_home_region
   terraform_backend_secondary_region = var.terraform_backend_secondary_region
-  aft_framework_repo = var.aft_framework_repo
+  aft_framework_repo                 = var.aft_framework_repo
 }
