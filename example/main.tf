@@ -40,4 +40,9 @@ module "aft" {
   control_tower_home_region          = var.control_tower_home_region
   terraform_backend_secondary_region = var.terraform_backend_secondary_region
   aft_framework_repo                 = var.aft_framework_repo
+
+  account_customizations_repo              = var.account_customizations_repo
+  account_provisioning_customizations_repo = var.account_provisioning_customizations_repo
+  account_request_repo                     = var.account_request_repo
+  global_customizations_repo               = var.global_customizations_repo
 }
