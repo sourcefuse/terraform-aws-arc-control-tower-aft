@@ -37,3 +37,15 @@ variable "terraform_backend_secondary_region" {
   type        = string
   default     = "us-east-2"
 }
+
+variable "aft_framework_repo" {
+  description = "Information on the git repo for managing the AFT framework"
+  type = object({
+    url = string
+    ref = string
+  })
+  default = {
+    url = "https://github.com/sourcefuse/terraform-aws-refarch-control-tower-aft.git"
+    ref = "main"
+  }
+}
