@@ -1,0 +1,16 @@
+## Auto generated backend.tf ##
+## Updated on: {{ timestamp }} ##
+
+terraform {
+  required_version = "~> 1.3"
+
+  backend "s3" {
+    region         = "{{ region }}"
+    bucket         = "{{ bucket }}"
+    key            = "{{ key }}"
+    dynamodb_table = "{{ dynamodb_table }}"
+    encrypt        = "true"
+    kms_key_id     = "{{ kms_key_id }}"
+    profile        = "aft-management"
+  }
+}
