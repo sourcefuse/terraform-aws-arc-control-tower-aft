@@ -16,7 +16,12 @@ terraform {
 ## aft
 ################################################################################
 module "aft" {
-  source = "git::https://github.com/aws-ia/terraform-aws-control_tower_account_factory?ref=1.7.0"
+  ## !! change the value of aft_framework_repo_git_ref when this ref changes !!
+  source = "git::https://github.com/aws-ia/terraform-aws-control_tower_account_factory?ref=1.8.0"
+
+  ## aft framework
+  aft_framework_repo_url     = "https://github.com/aws-ia/terraform-aws-control_tower_account_factory"
+  aft_framework_repo_git_ref = "1.8.0" # !! change this when you increment the source ref !!
 
   ## required account ids
   aft_management_account_id = var.account_ids.aft_management
@@ -25,8 +30,6 @@ module "aft" {
   log_archive_account_id    = var.account_ids.log_archive
 
   ## configuration repos
-  aft_framework_repo_url                          = var.aft_framework_repo.url
-  aft_framework_repo_git_ref                      = var.aft_framework_repo.ref
   account_customizations_repo_name                = var.account_customizations_repo.name
   account_customizations_repo_branch              = var.account_customizations_repo.branch
   account_provisioning_customizations_repo_name   = var.account_provisioning_customizations_repo.name

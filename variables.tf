@@ -14,18 +14,6 @@ variable "account_ids" {
 ################################################################################
 ## configuration repos
 ################################################################################
-variable "aft_framework_repo" {
-  description = "Information on the git repo for managing the AFT framework"
-  type = object({
-    url = string
-    ref = string
-  })
-  default = {
-    url = "https://github.com/sourcefuse/terraform-aws-refarch-control-tower-aft.git"
-    ref = "main"
-  }
-}
-
 variable "account_customizations_repo" {
   description = "Information on the git repo for managing the account customizations. For non-CodeCommit repos, name should be in the format of org/repo."
   type = object({
