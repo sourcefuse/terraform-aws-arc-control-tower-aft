@@ -37,3 +37,51 @@ variable "terraform_backend_secondary_region" {
   type        = string
   default     = "us-east-2"
 }
+
+variable "account_customizations_repo" {
+  description = "Information on the git repo for managing the account customizations. For non-CodeCommit repos, name should be in the format of org/repo."
+  type = object({
+    name   = string
+    branch = string
+  })
+  default = {
+    name   = "sourcefuse/terraform-aws-refarch-aft-account-customizations"
+    branch = "main"
+  }
+}
+
+variable "account_provisioning_customizations_repo" {
+  description = "Information on the git repo for provisioning the account customizations. For non-CodeCommit repos, name should be in the format of org/repo."
+  type = object({
+    name   = string
+    branch = string
+  })
+  default = {
+    name   = "sourcefuse/terraform-aws-refarch-aft-account-provisioning-customizations"
+    branch = "main"
+  }
+}
+
+variable "account_request_repo" {
+  description = "Information on the git repo for account requests. For non-CodeCommit repos, name should be in the format of org/repo."
+  type = object({
+    name   = string
+    branch = string
+  })
+  default = {
+    name   = "sourcefuse/terraform-aws-refarch-aft-account-request"
+    branch = "main"
+  }
+}
+
+variable "global_customizations_repo" {
+  description = "Information on the git repo for global customizations. For non-CodeCommit repos, name should be in the format of org/repo."
+  type = object({
+    name   = string
+    branch = string
+  })
+  default = {
+    name   = "sourcefuse/terraform-aws-refarch-aft-global-customizations"
+    branch = "main"
+  }
+}
