@@ -6,29 +6,13 @@ SourceFuse AWS Reference Architecture (ARC) Terraform module for managing Contro
 
 ## Usage
 
-To see a full example, check out the [main.tf](./example/main.tf) file in the example folder. 
+To see a full example, check out the [main.tf](./example/main.tf) file in the example folder.
 
 ```hcl
 module "aft" {
   source = "git::https://github.com/sourcefuse/terraform-aws-refarch-control-tower-aft.git"
 }
 ```
-
-### AFT CodeBuild Access Token
-If AFT is reading from a private repo, CodeBuild will need access to that repo via an access token.  
-
-This will need to be added prior to executing `terraform apply`.  
-Connecting to GitHub with an access token:  
-* Run the import-source-credentials command to generate a json skeleton:  
-  ```shell
-  aws codebuild import-source-credentials --generate-cli-skeleton > import-source-credentials.json
-  ```
-* Update the fields with the appropriate information, see [Access your source provider in CodeBuild](https://docs.aws.amazon.com/codebuild/latest/userguide/access-tokens.html) 
-for more information.  
-* Import the credentials to the AFT Management account:  
-  ```shell
-  aws codebuild import-source-credentials --cli-input-json file://import-source-credentials.json
-  ```
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
@@ -104,6 +88,12 @@ No resources.
 | <a name="output_vcs_provider"></a> [vcs\_provider](#output\_vcs\_provider) | VCS Provider where the repos are configure for the different accounts. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
+## Versioning  
+This project uses a `.version` file at the root of the repo which the pipeline reads from and does a git tag.  
+
+When you intend to commit to `main`, you will need to increment this version. Once the project is merged,
+the pipeline will kick off and tag the latest git commit.  
+
 ## Development
 
 ### Prerequisites
@@ -111,28 +101,12 @@ No resources.
 - [terraform](https://learn.hashicorp.com/terraform/getting-started/install#installing-terraform)
 - [terraform-docs](https://github.com/segmentio/terraform-docs)
 - [pre-commit](https://pre-commit.com/#install)
-- [golang](https://golang.org/doc/install#install)
-- [golint](https://github.com/golang/lint#installation)
 
 ### Configurations
 
 - Configure pre-commit hooks
   ```sh
   pre-commit install
-  ```
-
-### Tests
-- Tests are available in `test` directory
-- Configure the dependencies
-  ```sh
-  cd test
-  go mod init github.com/sourcefuse/terraform-aws-refarch-control-tower-aft
-  go get github.com/gruntwork-io/terratest/modules/terraform
-  ```
-- Now execute the test  
-  ```sh
-  cd test/
-  go test
   ```
 
 ## Authors
