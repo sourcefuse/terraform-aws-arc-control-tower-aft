@@ -1,5 +1,6 @@
 # terraform-aws-refarch-control-tower-aft
 
+[![Known Vulnerabilities](https://github.com/sourcefuse/terraform-aws-refarch-control-tower-aft/actions/workflows/snyk.yaml/badge.svg)](https://github.com/sourcefuse/terraform-aws-refarch-control-tower-aft/actions/workflows/snyk.yaml)
 ## Overview
 
 SourceFuse AWS Reference Architecture (ARC) Terraform module for managing Control Tower Account Factory Terraform.
