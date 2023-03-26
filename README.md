@@ -5,7 +5,7 @@
 
 SourceFuse AWS Reference Architecture (ARC) Terraform module for managing Control Tower Account Factory Terraform. Part of the ARC AWS Landing Zone solution.
 
-![](./static/arc_landing_zone.png)
+![ARC Landing Zone](./static/arc_landing_zone.png)
 
 ## Usage
 
