@@ -17,7 +17,7 @@ provider "aws" {
 }
 
 module "tags" {
-  source = "git::https://github.com/sourcefuse/terraform-aws-refarch-tags?ref=1.0.3"
+  source = "git::https://github.com/sourcefuse/terraform-aws-refarch-tags?ref=1.2.2"
 
   environment = terraform.workspace
   project     = "terraform-aws-refarch-control-tower-aft"
