@@ -16,8 +16,8 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_aft"></a> [aft](#module\_aft) | ../ | n/a |
-| <a name="module_tags"></a> [tags](#module\_tags) | git::https://github.com/sourcefuse/terraform-aws-refarch-tags | 1.2.2 |
+| <a name="module_aft"></a> [aft](#module\_aft) | sourcefuse/arc-control-tower-aft/aws | 0.3.6 |
+| <a name="module_tags"></a> [tags](#module\_tags) | sourcefuse/arc-tags/aws | 1.2.3 |
 
 ## Resources
 

@@ -17,7 +17,8 @@ provider "aws" {
 }
 
 module "tags" {
-  source = "git::https://github.com/sourcefuse/terraform-aws-refarch-tags?ref=1.2.2"
+  source  = "sourcefuse/arc-tags/aws"
+  version = "1.2.3"
 
   environment = terraform.workspace
   project     = "terraform-aws-refarch-control-tower-aft"
@@ -31,7 +32,8 @@ module "tags" {
 ## control tower
 ################################################################################
 module "aft" {
-  source = "../"
+  source  = "sourcefuse/arc-control-tower-aft/aws"
+  version = "0.3.6"
 
   account_ids                        = var.account_ids
   aft_vpc_cidr                       = var.aft_vpc_cidr
