@@ -16,7 +16,7 @@
 ![Terraform](https://img.shields.io/badge/terraform-%235835CC.svg?style=for-the-badge&logo=terraform&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)
 
-[![Quality Gate](https://sonarcloud.io/api/project_badges/quality_gate?project=sourcefuse_terraform-aws-arc-control-tower)](https://sonarcloud.io/summary/new_code?id=sourcefuse_terraform-aws-arc-control-tower)
+<!-- [![Quality Gate](https://sonarcloud.io/api/project_badges/quality_gate?project=sourcefuse_terraform-aws-arc-control-tower)](https://sonarcloud.io/summary/new_code?id=sourcefuse_terraform-aws-arc-control-tower) -->
 
 
 ## Overview
