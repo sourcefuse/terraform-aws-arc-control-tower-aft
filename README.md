@@ -1,4 +1,4 @@
-![Module Banner](./static/arc_landing_zone.png)
+
 
 # [terraform-aws-arc-control-tower-aft](https://github.com/sourcefuse/terraform-aws-arc-control-tower-aft)
 
@@ -20,6 +20,8 @@
 
 
 ## Overview
+
+![Module Banner](./static/arc_landing_zone.png)
 
 Deploys AWS Control Tower Account Factory for Terraform (AFT) to automate account provisioning and customization across a multi-account AWS organization.
 
